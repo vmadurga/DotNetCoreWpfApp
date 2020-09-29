@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 using DotNetCoreWpfApp.Contracts.ViewModels;
 using DotNetCoreWpfApp.Core.Contracts.Services;

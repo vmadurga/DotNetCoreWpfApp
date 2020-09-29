@@ -1,6 +1,4 @@
-﻿using System;
-
-using DotNetCoreWpfApp.Models;
+﻿using DotNetCoreWpfApp.Models;
 
 namespace DotNetCoreWpfApp.Contracts.Services
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-using DotNetCoreWpfApp.Helpers;
+﻿using DotNetCoreWpfApp.Helpers;
 
 namespace DotNetCoreWpfApp.ViewModels
 {
