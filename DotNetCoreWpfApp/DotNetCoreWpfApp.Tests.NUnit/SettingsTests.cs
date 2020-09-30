@@ -8,11 +8,11 @@ using NUnit.Framework;
 
 namespace DotNetCoreWpfApp.Tests.NUnit
 {
-    public class TestSettings
+    public class SettingsTests
     {
-        [SetUp]
-        public void Setup()
+        public SettingsTests()
         {
+
         }
 
         [Test]

@@ -14,11 +14,11 @@ using Xunit;
 
 namespace DotNetCoreWpfApp.Tests.xUnit
 {
-    public class TestPages
+    public class PagesTests
     {
         private readonly IHost _host;
 
-        public TestPages()
+        public PagesTests()
         {
             var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location);
             _host = Host.CreateDefaultBuilder()

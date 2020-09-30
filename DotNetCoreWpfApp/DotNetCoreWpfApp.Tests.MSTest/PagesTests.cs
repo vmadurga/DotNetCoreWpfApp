@@ -15,11 +15,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DotNetCoreWpfApp.Tests.MSTest
 {
     [TestClass]
-    public class TestPages
+    public class PagesTests
     {
         private readonly IHost _host;
 
-        public TestPages()
+        public PagesTests()
         {
             var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location);
             _host = Host.CreateDefaultBuilder()

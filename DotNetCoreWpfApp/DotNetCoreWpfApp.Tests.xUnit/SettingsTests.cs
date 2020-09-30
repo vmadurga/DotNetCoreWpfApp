@@ -8,10 +8,11 @@ using Xunit;
 
 namespace DotNetCoreWpfApp.Tests.xUnit
 {
-    public class TestSettings
+    public class SettingsTests
     {
-        public TestSettings()
+        public SettingsTests()
         {
+
         }
 
         [Fact]

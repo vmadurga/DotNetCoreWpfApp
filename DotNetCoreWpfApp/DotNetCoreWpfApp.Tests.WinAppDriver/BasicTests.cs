@@ -16,11 +16,12 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
         // TODO WTS: set the app launch ID.
         // The part before "!App" will be in Package.Appxmanifest > Packaging > Package Family Name.
         // The app must also be installed (or launched for debugging) for WinAppDriver to be able to launch it.
-        protected const string AppToLaunch = @"0288BEEF-FC25-48AC-96A6-E0CD3AAE31E3_yf1pvhpsts1fe!App";
+        private const string AppToLaunch = @"0288BEEF-FC25-48AC-96A6-E0CD3AAE31E3_yf1pvhpsts1fe!App";
 
-        protected static WindowsDriver<WindowsElement> AppSession { get; set; }
+        private static WindowsDriver<WindowsElement> AppSession { get; set; }
 
         private static string _screenshotFolder;
+        private static string _screenshotFilePath;
 
         [ClassInitialize]
         public static void Setup(TestContext context)
@@ -28,7 +29,7 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
             // TODO WTS: change the location where screenshots are saved.
             // Create separate folders for saving the results of each test run.
             _screenshotFolder = $"{Path.GetPathRoot(Environment.CurrentDirectory)}\\Temp\\Screenshots\\{DateTime.Now:dd_HHmm}\\";
-
+            _screenshotFilePath = Path.Combine(_screenshotFolder, $"{Path.GetRandomFileName()}.png");
             // Make sure the folder exists or saving screenshots will fail.
             if (!Directory.Exists(_screenshotFolder))
             {
@@ -75,12 +76,10 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
         [TestMethod]
         public void TakeScreenshotOfLaunchPage()
         {
-            var screenshotFileName = Path.Combine(_screenshotFolder, $"{Path.GetRandomFileName()}.png");
-
             var screenshot = AppSession.GetScreenshot();
-            screenshot.SaveAsFile(screenshotFileName, ScreenshotImageFormat.Png);
+            screenshot.SaveAsFile(_screenshotFilePath, ScreenshotImageFormat.Png);
 
-            Assert.IsTrue(File.Exists(screenshotFileName));
+            Assert.IsTrue(File.Exists(_screenshotFilePath));
         }
 
         [TestCleanup]
@@ -91,6 +90,11 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
                 AppSession.CloseApp();
                 AppSession.Dispose();
                 AppSession = null;
+            }
+
+            if (File.Exists(_screenshotFilePath))
+            {
+                File.Delete(_screenshotFilePath);
             }
         }
     }

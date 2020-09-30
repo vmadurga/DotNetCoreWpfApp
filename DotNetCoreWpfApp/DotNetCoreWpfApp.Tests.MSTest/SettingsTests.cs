@@ -9,10 +9,11 @@ using Moq;
 namespace DotNetCoreWpfApp.Tests.MSTest
 {
     [TestClass]
-    public class TestSettings
+    public class SettingsTests
     {
-        public TestSettings()
+        public SettingsTests()
         {
+
         }
 
         [TestMethod]

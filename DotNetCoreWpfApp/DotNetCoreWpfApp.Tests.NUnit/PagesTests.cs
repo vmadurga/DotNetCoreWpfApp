@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace DotNetCoreWpfApp.Tests.NUnit
 {
-    public class TestPages
+    public class PagesTests
     {
         private IHost _host;
 
