@@ -56,9 +56,11 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
 
                 appiumOptions.AddAdditionalCapability("app", "Root");
                 AppSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
+
+                //Get main window by Accessibility Id
                 var mainWindow = AppSession.FindElementByAccessibilityId("WpfUITestingMainWindow");
                 var mainWindowHandle = mainWindow.GetAttribute("NativeWindowHandle");
-                mainWindowHandle = (int.Parse(mainWindowHandle)).ToString("x"); // Convert to Hex
+                mainWindowHandle = int.Parse(mainWindowHandle).ToString("x"); // Convert to Hex
                 appiumOptions = new AppiumOptions();
                 appiumOptions.AddAdditionalCapability("appTopLevelWindow", mainWindowHandle);
                 AppSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
