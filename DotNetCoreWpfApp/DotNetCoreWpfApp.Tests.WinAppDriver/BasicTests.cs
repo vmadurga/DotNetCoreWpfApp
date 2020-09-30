@@ -13,9 +13,10 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
         // TODO WTS: install WinAppDriver and start it before running tests: https://github.com/Microsoft/WinAppDriver
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
 
-        // TODO WTS: set the app launch path.
+        // TODO WTS: set the app launch ID.
+        // The part before "!App" will be in Package.Appxmanifest > Packaging > Package Family Name.
         // The app must also be installed (or launched for debugging) for WinAppDriver to be able to launch it.
-        protected const string AppToLaunch = @"C:\dev\vmadurga\DotNetCoreWpfApp\DotNetCoreWpfApp\DotNetCoreWpfApp\bin\x86\Debug\netcoreapp3.1\DotNetCoreWpfApp.exe";
+        protected const string AppToLaunch = @"0288BEEF-FC25-48AC-96A6-E0CD3AAE31E3_yf1pvhpsts1fe!App";
 
         protected static WindowsDriver<WindowsElement> AppSession { get; set; }
 
@@ -42,10 +43,27 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
             {
                 var appiumOptions = new AppiumOptions();
                 appiumOptions.AddAdditionalCapability("app", AppToLaunch);
+                appiumOptions.AddAdditionalCapability("deviceName", "WindowsPC");
+                try
+                {
+                    AppSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
+                }
+                catch
+                {
+                    Console.WriteLine("Failed to attach to app session (expected).");
+                }
+
+                appiumOptions.AddAdditionalCapability("app", "Root");
+                AppSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
+                var mainWindow = AppSession.FindElementByAccessibilityId("WpfUITestingMainWindow");
+                var mainWindowHandle = mainWindow.GetAttribute("NativeWindowHandle");
+                mainWindowHandle = (int.Parse(mainWindowHandle)).ToString("x"); // Convert to Hex
+                appiumOptions = new AppiumOptions();
+                appiumOptions.AddAdditionalCapability("appTopLevelWindow", mainWindowHandle);
                 AppSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
 
                 Assert.IsNotNull(AppSession, "Unable to launch app.");
-
+                
                 AppSession.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
 
                 // Maximize the window to have a consistent size and position.
@@ -70,6 +88,7 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
         {
             if (AppSession != null)
             {
+                AppSession.CloseApp();
                 AppSession.Dispose();
                 AppSession = null;
             }
