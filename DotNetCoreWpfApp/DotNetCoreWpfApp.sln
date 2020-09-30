@@ -9,13 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreWpfApp.Core", "Do
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "DotNetCoreWpfApp.Packaging", "DotNetCoreWpfApp.Packaging\DotNetCoreWpfApp.Packaging.wapproj", "{C1FB544C-CA46-47FF-BBC8-AB182B4DD360}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWpfApp.Tests.MSTest", "DotNetCoreWpfApp.Tests.MSTest\DotNetCoreWpfApp.Tests.MSTest.csproj", "{F813B8E3-0166-4F60-81BE-3EC29BFA168B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreWpfApp.Tests.MSTest", "DotNetCoreWpfApp.Tests.MSTest\DotNetCoreWpfApp.Tests.MSTest.csproj", "{F813B8E3-0166-4F60-81BE-3EC29BFA168B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWpfApp.Core.Tests.MSTest", "DotNetCoreWpfApp.Core.Tests.MSTest\DotNetCoreWpfApp.Core.Tests.MSTest.csproj", "{B58D4471-2779-471E-BA90-C78B574AF8E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreWpfApp.Core.Tests.MSTest", "DotNetCoreWpfApp.Core.Tests.MSTest\DotNetCoreWpfApp.Core.Tests.MSTest.csproj", "{B58D4471-2779-471E-BA90-C78B574AF8E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWpfApp.Tests.NUnit", "DotNetCoreWpfApp.Tests.NUnit\DotNetCoreWpfApp.Tests.NUnit.csproj", "{10DF5D0B-51C9-4253-AC19-DB0A4B4351EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreWpfApp.Tests.NUnit", "DotNetCoreWpfApp.Tests.NUnit\DotNetCoreWpfApp.Tests.NUnit.csproj", "{10DF5D0B-51C9-4253-AC19-DB0A4B4351EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWpfApp.Core.Tests.NUnit", "DotNetCoreWpfApp.Core.Tests.NUnit\DotNetCoreWpfApp.Core.Tests.NUnit.csproj", "{FE088DA0-21DD-4320-8D0B-BF6B373A118D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreWpfApp.Core.Tests.NUnit", "DotNetCoreWpfApp.Core.Tests.NUnit\DotNetCoreWpfApp.Core.Tests.NUnit.csproj", "{FE088DA0-21DD-4320-8D0B-BF6B373A118D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWpfApp.Core.Tests.xUnit", "DotNetCoreWpfApp.Core.Tests.xUnit\DotNetCoreWpfApp.Core.Tests.xUnit.csproj", "{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWpfApp.Tests.xUnit", "DotNetCoreWpfApp.Tests.xUnit\DotNetCoreWpfApp.Tests.xUnit.csproj", "{8A255810-E584-43C3-A720-1FE90306DEEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -175,6 +179,46 @@ Global
 		{FE088DA0-21DD-4320-8D0B-BF6B373A118D}.Release|x64.Build.0 = Release|Any CPU
 		{FE088DA0-21DD-4320-8D0B-BF6B373A118D}.Release|x86.ActiveCfg = Release|Any CPU
 		{FE088DA0-21DD-4320-8D0B-BF6B373A118D}.Release|x86.Build.0 = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|ARM.Build.0 = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|x64.Build.0 = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|ARM.Build.0 = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|ARM64.Build.0 = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|x64.ActiveCfg = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|x64.Build.0 = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{F3A22E3D-2C83-4512-9A84-C4140C81C6C6}.Release|x86.Build.0 = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|x64.Build.0 = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Debug|x86.Build.0 = Debug|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|ARM.Build.0 = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|ARM64.Build.0 = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|x64.ActiveCfg = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|x64.Build.0 = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|x86.ActiveCfg = Release|Any CPU
+		{8A255810-E584-43C3-A720-1FE90306DEEF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
