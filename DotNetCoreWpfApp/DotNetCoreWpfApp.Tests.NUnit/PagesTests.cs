@@ -59,6 +59,7 @@ namespace DotNetCoreWpfApp.Tests.NUnit
         public void TestMainViewModelCreation()
         {
             var vm = _host.Services.GetService(typeof(MainViewModel));
+
             Assert.IsNotNull(vm);
         }
 
@@ -81,6 +82,7 @@ namespace DotNetCoreWpfApp.Tests.NUnit
         public void TestContentGridViewModelCreation()
         {
             var vm = _host.Services.GetService(typeof(ContentGridViewModel));
+
             Assert.IsNotNull(vm);
         }
 
@@ -103,6 +105,7 @@ namespace DotNetCoreWpfApp.Tests.NUnit
         public void TestContentGridDetailViewModelCreation()
         {
             var vm = _host.Services.GetService(typeof(ContentGridDetailViewModel));
+
             Assert.IsNotNull(vm);
         }
 
@@ -125,6 +128,7 @@ namespace DotNetCoreWpfApp.Tests.NUnit
         public void TestDataGridViewModelCreation()
         {
             var vm = _host.Services.GetService(typeof(DataGridViewModel));
+
             Assert.IsNotNull(vm);
         }
 
@@ -147,6 +151,7 @@ namespace DotNetCoreWpfApp.Tests.NUnit
         public void TestMasterDetailViewModelCreation()
         {
             var vm = _host.Services.GetService(typeof(MasterDetailViewModel));
+
             Assert.IsNotNull(vm);
         }
 
@@ -169,6 +174,7 @@ namespace DotNetCoreWpfApp.Tests.NUnit
         public void TestSettingsViewModelCreation()
         {
             var vm = _host.Services.GetService(typeof(SettingsViewModel));
+
             Assert.IsNotNull(vm);
         }
 

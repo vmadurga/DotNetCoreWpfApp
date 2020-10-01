@@ -18,7 +18,9 @@ namespace DotNetCoreWpfApp.Core.Tests.xUnit
         public async Task EnsureSampleDataServiceReturnsContentGridDataAsync()
         {
             var sampleDataService = new SampleDataService();
+
             var data = await sampleDataService.GetContentGridDataAsync();
+
             Assert.True(data.Any());
         }
 
@@ -28,7 +30,9 @@ namespace DotNetCoreWpfApp.Core.Tests.xUnit
         public async Task EnsureSampleDataServiceReturnsGridDataAsync()
         {
             var sampleDataService = new SampleDataService();
+
             var data = await sampleDataService.GetGridDataAsync();
+
             Assert.True(data.Any());
         }
 
@@ -38,7 +42,9 @@ namespace DotNetCoreWpfApp.Core.Tests.xUnit
         public async Task EnsureSampleDataServiceReturnsMasterDetailDataAsync()
         {
             var sampleDataService = new SampleDataService();
+
             var data = await sampleDataService.GetMasterDetailDataAsync();
+
             Assert.True(data.Any());
         }
     }

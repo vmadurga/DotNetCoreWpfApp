@@ -2,6 +2,7 @@
 using System.IO;
 using DotNetCoreWpfApp.Core.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 
 namespace DotNetCoreWpfApp.Core.Tests.MSTest
 {
@@ -10,6 +11,8 @@ namespace DotNetCoreWpfApp.Core.Tests.MSTest
     {
         private string _folderPath;
         private string _fileName;
+        private string _fileData;
+        private string _filePath;
 
         public FileServiceTests()
         {
@@ -21,25 +24,61 @@ namespace DotNetCoreWpfApp.Core.Tests.MSTest
         {
             _folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UnitTests");
             _fileName = "Tests.json";
+            _fileData = "Lorem ipsum dolor sit amet";
+            _filePath = Path.Combine(_folderPath, _fileName);
         }
 
         [TestMethod]
-        public void TestReadDataFromFile()
+        public void TestSaveFile()
         {
             var fileService = new FileService();
-            var fileData = "Lorem ipsum dolor sit amet";
-            fileService.Save(_folderPath, _fileName, fileData);
+
+            fileService.Save(_folderPath, _fileName, _fileData);
+
+            if (File.Exists(_filePath))
+            {
+                var jsonContentFile = File.ReadAllText(_filePath);
+                var contentFile = JsonConvert.DeserializeObject<string>(jsonContentFile);
+                Assert.AreEqual(_fileData, contentFile);
+            }
+            else
+            {
+                Assert.Fail($"File not exist: {_filePath}");
+            }
+        }
+
+        [TestMethod]
+        public void TestReadFile()
+        {
+            var fileService = new FileService();
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            File.WriteAllText(_filePath, JsonConvert.SerializeObject(_fileData));
+
             var cacheData = fileService.Read<string>(_folderPath, _fileName);
-            Assert.AreEqual(fileData, cacheData);
+
+            Assert.AreEqual(_fileData, cacheData);
+        }
+
+        [TestMethod]
+        public void TestDeleteFile()
+        {
+            var fileService = new FileService();
+            File.WriteAllText(_filePath, _fileData);
+
+            fileService.Delete(_folderPath, _fileName);
+
+            Assert.IsFalse(File.Exists(_filePath));
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            var filePath = Path.Combine(_folderPath, _fileName);
-            if (File.Exists(filePath))
+            if (File.Exists(_filePath))
             {
-                File.Delete(filePath);
+                File.Delete(_filePath);
             }
         }
     }

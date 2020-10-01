@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using DotNetCoreWpfApp.Core.Services;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace DotNetCoreWpfApp.Core.Tests.xUnit
@@ -9,32 +10,67 @@ namespace DotNetCoreWpfApp.Core.Tests.xUnit
     {
         private readonly string _folderPath;
         private readonly string _fileName;
+        private readonly string _fileData;
+        private readonly string _filePath;
 
         public FileServiceTests()
         {
             _folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UnitTests");
             _fileName = "Tests.json";
+            _fileData = "Lorem ipsum dolor sit amet";
+            _filePath = Path.Combine(_folderPath, _fileName);
         }
 
         [Fact]
-        public void TestReadDataFromFile()
+        public void TestSaveFile()
         {
-            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var folderPath = Path.Combine(localAppData, "UnitTests");
-            var fileName = "Tests.json";
             var fileService = new FileService();
-            var fileData = "Lorem ipsum dolor sit amet";
-            fileService.Save(folderPath, fileName, fileData);
-            var cacheData = fileService.Read<string>(folderPath, fileName);
-            Assert.Equal(fileData, cacheData);
+
+            fileService.Save(_folderPath, _fileName, _fileData);
+
+            if (File.Exists(_filePath))
+            {
+                var jsonContentFile = File.ReadAllText(_filePath);
+                var contentFile = JsonConvert.DeserializeObject<string>(jsonContentFile);
+                Assert.Equal(_fileData, contentFile);
+            }
+            else
+            {
+                Assert.True(false, $"File not exist: {_filePath}");
+            }
+        }
+
+        [Fact]
+        public void TestReadFile()
+        {
+            var fileService = new FileService();
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            File.WriteAllText(_filePath, JsonConvert.SerializeObject(_fileData));
+
+            var cacheData = fileService.Read<string>(_folderPath, _fileName);
+
+            Assert.Equal(_fileData, cacheData);
+        }
+
+        [Fact]
+        public void TestDeleteFile()
+        {
+            var fileService = new FileService();
+            File.WriteAllText(_filePath, _fileData);
+
+            fileService.Delete(_folderPath, _fileName);
+
+            Assert.False(File.Exists(_filePath));
         }
 
         public void Dispose()
         {
-            var filePath = Path.Combine(_folderPath, _fileName);
-            if (File.Exists(filePath))
+            if (File.Exists(_filePath))
             {
-                File.Delete(filePath);
+                File.Delete(_filePath);
             }
         }
     }
