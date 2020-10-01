@@ -9,7 +9,7 @@
     xmlns:properties="clr-namespace:DotNetCoreWpfApp.Properties"
     xmlns:templateSelectors="clr-namespace:DotNetCoreWpfApp.TemplateSelectors"
     Style="{StaticResource CustomMetroWindow}"
-    AutomationProperties.AutomationId="WpfUITestingMainWindow"
+    AutomationProperties.AutomationId="DotNetCoreWpfAppMainWindow"
     mc:Ignorable="d"
     MinWidth="500"
     MinHeight="350"
