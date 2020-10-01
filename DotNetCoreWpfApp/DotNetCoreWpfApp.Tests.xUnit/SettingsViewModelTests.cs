@@ -4,18 +4,18 @@ using DotNetCoreWpfApp.Models;
 using DotNetCoreWpfApp.ViewModels;
 using Microsoft.Extensions.Options;
 using Moq;
-using NUnit.Framework;
+using Xunit;
 
-namespace DotNetCoreWpfApp.Tests.NUnit
+namespace DotNetCoreWpfApp.Tests.xUnit
 {
-    public class SettingsTests
+    public class SettingsViewModelTests
     {
-        public SettingsTests()
+        public SettingsViewModelTests()
         {
 
         }
 
-        [Test]
+        [Fact]
         public void TestSettingsViewModel_SetCurrentTheme()
         {
             var mockThemeSelectorService = new Mock<IThemeSelectorService>();
@@ -27,25 +27,37 @@ namespace DotNetCoreWpfApp.Tests.NUnit
             var settingsVm = new SettingsViewModel(mockAppConfig.Object, mockThemeSelectorService.Object, mockSystemService.Object, mockApplicationInfoService.Object);
             settingsVm.OnNavigatedTo(null);
 
-            Assert.AreEqual(AppTheme.Light, settingsVm.Theme);
+            Assert.Equal(AppTheme.Light, settingsVm.Theme);
         }
 
-        [Test]
+        [Fact]
         public void TestSettingsViewModel_SetCurrentVersion()
         {
             var mockThemeSelectorService = new Mock<IThemeSelectorService>();
             var mockAppConfig = new Mock<IOptions<AppConfig>>();
             var mockSystemService = new Mock<ISystemService>();
             var mockApplicationInfoService = new Mock<IApplicationInfoService>();
-
             var testVersion = new Version(1, 2, 3, 4);
-
             mockApplicationInfoService.Setup(mock => mock.GetVersion()).Returns(testVersion);
 
             var settingsVm = new SettingsViewModel(mockAppConfig.Object, mockThemeSelectorService.Object, mockSystemService.Object, mockApplicationInfoService.Object);
             settingsVm.OnNavigatedTo(null);
 
-            Assert.AreEqual($"DotNetCoreWpfApp - {testVersion}", settingsVm.VersionDescription);
+            Assert.Equal($"DotNetCoreWpfApp - {testVersion}", settingsVm.VersionDescription);
+        }
+
+        [Fact]
+        public void TestSettingsViewModel_SetThemeCommand()
+        {
+            var mockThemeSelectorService = new Mock<IThemeSelectorService>();
+            var mockAppConfig = new Mock<IOptions<AppConfig>>();
+            var mockSystemService = new Mock<ISystemService>();
+            var mockApplicationInfoService = new Mock<IApplicationInfoService>();
+
+            var settingsVm = new SettingsViewModel(mockAppConfig.Object, mockThemeSelectorService.Object, mockSystemService.Object, mockApplicationInfoService.Object);
+            settingsVm.SetThemeCommand.Execute(AppTheme.Light.ToString());
+
+            mockThemeSelectorService.Verify(mock => mock.SetTheme(AppTheme.Light));
         }
     }
 }
