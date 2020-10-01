@@ -53,7 +53,7 @@ namespace DotNetCoreWpfApp.Tests.NUnit
             // Configuration
             services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
         }
-        
+
         // TODO WTS: Add tests for functionality you add to MainViewModel.
         [Test]
         public void TestMainViewModelCreation()

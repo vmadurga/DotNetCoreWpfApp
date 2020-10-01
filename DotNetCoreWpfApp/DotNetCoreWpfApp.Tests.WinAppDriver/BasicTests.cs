@@ -72,7 +72,7 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
                 }
 
                 Assert.IsNotNull(AppSession, "Unable to launch app.");
-                
+
                 AppSession.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
 
                 // Maximize the window to have a consistent size and position.
@@ -90,7 +90,6 @@ namespace DotNetCoreWpfApp.Tests.WinAppDriver
             Assert.IsTrue(File.Exists(_screenshotFilePath));
 
             File.Delete(_screenshotFilePath);
-
         }
 
         [TestCleanup]
